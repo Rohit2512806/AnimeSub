@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anime Sub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="components.css">
+  <style>
+/* Page-specific styles for index.html */
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 15px auto;
+  padding: 0 20px;
+}
+
+/* Anime Grid Styles */
+.anime-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.anime-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.anime-item > a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.anime-card {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5px;
+  width: 142px; /* Increased slightly for better fit */
+  height: 205px; /* Adjusted height */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+.anime-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+.anime-card img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+}
+.anime-card h3 {
+  display: none; /* Hide original h3 */
+}
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0rem 0rem;
+}
+.episode-btn, .sub-btn {
+  padding: 0.3rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.episode-btn {
+  background-color:orange;
+  color: white;
+}
+.sub-btn {
+  background-color: lightgreen;
+  color: black;
+}
+.anime-title {
+  color: var(--text-color);
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  text-align: center;
+  width: 100%;
+  max-width: 142px; /* Match card width */
+  word-wrap: break-word;
+  height: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.2;
+}
+
+/* Section for "Latest Anime" and "Recommendations" */
+.anime-section {
+  background-color: var(--card-bg);
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* View All Button */
+.view-all-btn-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+.view-all-btn {
+  background-color: var(--accent);
+  color: #111;
+  border: none;
+    padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+  border-radius: 5px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+.view-all-btn:hover {
+  background-color: #00e6b3; /* A slightly different green on hover */
+}
+
+/* Genre and Season Sections */
+.genre-section, .season-section {
+  background-color: var(--card-bg);
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.genre-list, .season-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+.genre-item, .season-item {
+  background-color: var(--secondary-bg);
+  color: var(--text-color);
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+.genre-item:hover, .season-item:hover {
+  background-color: var(--accent);
+  color: #111;
+}
+
+/* Styles for recommendation buttons */
+.recommendation-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.recommendation-buttons button {
+  background-color: var(--secondary-bg);
+  color: var(--text-color);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.recommendation-buttons button:hover {
+  background-color: red;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+  .section-title {
+    font-size: 1.5em;
+  }
+  .anime-container {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 0.8rem;
+  }
+  .anime-card {
+    width: 112px;
+    height: 164px;
+    padding-bottom: 0.3rem;
+  }
+  .anime-card img {
+    height: 140px;
+  }
+  .anime-title {
+    max-width: 112px;
+    font-size: 0.8rem;
+  }
+  .episode-btn, .sub-btn {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+  }
+}
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <div id="nav-placeholder"></div>
+
+  <div id="mainContent">
+    <div class="container">
+      <section id="latestAnimeSection" class="anime-section">
+        <h2 class="section-title">Latest Anime</h2>
+        <div class="anime-container" id="latestAnimeGrid">
+          </div>
+        <div class="view-all-btn-container" id="latestAnimeNextButton">
+          <a href="all-anime.html" class="view-all-btn">Next</a>
+        </div>
+      </section>
+
+      <section id="recommendationSection" class="anime-section">
+        <h2 class="section-title">Recommendations</h2>
+        <div class="recommendation-buttons">
+            <button id="btnRecommendedForYou">For You</button>
+            <button id="btnPopular">Popular</button>
+            <button id="btnTrending">Trending</button>
+        </div>
+        <div class="anime-container" id="recommendationGrid">
+          </div>
+      </section>
+
+      <section id="genreSection" class="genre-section">
+        <h2 class="section-title"> Genre</h2>
+        <div class="genre-list" id="genreList">
+          </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="search-results-section" id="searchResultsSection">
+    <h2></h2>
+    <div class="anime-container" id="searchResultsContainer">
+        </div>
+  </div>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="animeData.js"></script>
+  <script src="components.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Latest Anime Section
+      const latestAnimeGrid = document.getElementById('latestAnimeGrid');
+      if (latestAnimeGrid && typeof allAnimeList !== 'undefined') {
+        // Display only the latest 8 anime for the homepage
+        const latestAnime = allAnimeList.slice(0, 8);
+        latestAnime.forEach(anime => {
+          latestAnimeGrid.appendChild(createAnimeCard(anime)); // Using common createAnimeCard
+        });
+      }
+
+      // Recommendation Section
+      const recommendationGrid = document.getElementById('recommendationGrid');
+      const btnRecommendedForYou = document.getElementById('btnRecommendedForYou');
+      const btnPopular = document.getElementById('btnPopular');
+      const btnTrending = document.getElementById('btnTrending');
+
+      // Function to display anime in the recommendation grid
+      function displayRecommendations(animeSubset) {
+        recommendationGrid.innerHTML = ''; // Clear existing cards
+        if (recommendationGrid && typeof allAnimeList !== 'undefined') {
+          animeSubset.forEach(anime => {
+            recommendationGrid.appendChild(createAnimeCard(anime));
+          });
+        }
+      }
+
+      // Default recommendations (e.g., first 8 from your list)
+      const defaultRecommendations = allAnimeList.slice(8, 16);
+      displayRecommendations(defaultRecommendations);
+
+      // Event listeners for the new recommendation buttons
+      btnRecommendedForYou.addEventListener('click', () => {
+        // Example: First 8 recommendations (can be customized)
+        const recommendedForYou = allAnimeList.slice(5, 10);
+        displayRecommendations(recommendedForYou);
+      });
+
+      btnPopular.addEventListener('click', () => {
+        // Example: Next 8 recommendations (can be customized)
+        const popularAnime = allAnimeList.slice(10, 16);
+        displayRecommendations(popularAnime);
+      });
+
+      btnTrending.addEventListener('click', () => {
+        // Example: Another 8 recommendations (can be customized)
+        const trendingAnime = allAnimeList.slice(16, 20);
+        displayRecommendations(trendingAnime);
+      });
+
+      // Populate Genre List
+      const genreListContainer = document.getElementById('genreList');
+      if (genreListContainer && typeof allAnimeList !== 'undefined') {
+        const allGenres = new Set();
+        allAnimeList.forEach(anime => {
+          if (Array.isArray(anime.genre)) {
+            anime.genre.forEach(g => allGenres.add(g));
+          } else if (typeof anime.genre === 'string') {
+            allGenres.add(anime.genre);
+          }
+        });
+
+        allGenres.forEach(genre => {
+          const genreItem = document.createElement('div');
+          genreItem.className = 'genre-item';
+          genreItem.textContent = genre;
+          genreItem.onclick = () => filterAnimeByGenre(genre); // Using common filterAnimeByGenre
+          genreListContainer.appendChild(genreItem);
+        });
+      }
+
+      // Populate Season List (Example, you'd extend this with actual season data)
+      const seasonListContainer = document.getElementById('seasonList');
+      if (seasonListContainer) {
+        const seasons = ["Spring 2024", "Summer 2024", "Fall 2024", "Winter 2025"];
+        seasons.forEach(season => {
+          const seasonItem = document.createElement('div');
+          seasonItem.className = 'season-item';
+          seasonItem.textContent = season;
+          seasonItem.onclick = () => alert(`Showing anime for ${season}`);
+          seasonListContainer.appendChild(seasonItem);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
