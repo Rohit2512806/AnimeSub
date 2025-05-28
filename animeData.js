@@ -248,13 +248,13 @@ const allAnimeList = [
     {
         title: "Mushoku Tensei",
         episode: "Ep 13",
-        img: "material /Mushoku Tensei.jpg",
+        img: "Mushoku Tensei.jpg",
         genre: ["Isekai", "Fantasy", "Drama", "2D Animation"],
         releaseDate: "11 Jan 2021",
         totalEpisodes: 23,
         description: "A 34-year-old NEET is reincarnated in a fantasy world as Rudeus Greyrat, retaining his memories but starting fresh as a baby. He decides to live his new life to the fullest.",
         episodes: [
-            { episodeNum: 1, title: "Mushoku Tensei - Ep 1", videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4", imageUrl: "material/Mushoku Tensei.jpg" },
+            { episodeNum: 1, title: "Mushoku Tensei - Ep 1", videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4", imageUrl: "Mushoku Tensei.jpg" },
             // ... up to 23 episodes
         ]
     },
