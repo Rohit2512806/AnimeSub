@@ -1,4 +1,5 @@
 // animeData.js
+
 const allAnimeList = [
     {
         title: "Battle Through the Heavens",
