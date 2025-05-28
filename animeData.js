@@ -25,16 +25,16 @@ const allAnimeList = [
     {
         title: "Lord of the Mysteries",
         episode: "Ep 6",
-        img: "material /Lord of the Mysteries.jpg", // Corrected path
+        img: "Lord of the Mysteries.jpg", // Corrected path
         genre: ["Action", "Adventure", "Mystery", "Fantasy", "2D Animation"],
         releaseDate: "14 April 2024",
         totalEpisodes: 12,
         description: "In a steampunk world filled with supernatural forces and secret organizations, Klein Moretti embarks on a dangerous journey of transformation after acquiring a mysterious ancient artifact.",
         episodes: [
-            { episodeNum: 1, title: "Lord of the Mysteries - Ep 1", videoUrl: "https://dai.ly/k5O2NOPQb7sm0uD7UMo", imageUrl: "material /Lord of the Mysteries.jpg" },
-            { episodeNum: 2, title: "Lord of the Mysteries - Ep 2", videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4", imageUrl: "material /Lord of the Mysteries.jpg" },
-            { episodeNum: 3, title: "Lord of the Mysteries - Ep 3", videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4", imageUrl: "material /Lord of the Mysteries.jpg" },
-            { episodeNum: 11, title: "Lord of the Mysteries - Ep 11", videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4", imageUrl: "material /Lord of the Mysteries.jpg" },
+            { episodeNum: 1, title: "Lord of the Mysteries - Ep 1", videoUrl: "https://dai.ly/k5O2NOPQb7sm0uD7UMo", imageUrl: "Lord of the Mysteries.jpg" },
+            { episodeNum: 2, title: "Lord of the Mysteries - Ep 2", videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4", imageUrl: "Lord of the Mysteries.jpg" },
+            { episodeNum: 3, title: "Lord of the Mysteries - Ep 3", videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4", imageUrl: "Lord of the Mysteries.jpg" },
+            { episodeNum: 11, title: "Lord of the Mysteries - Ep 11", videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4", imageUrl: "Lord of the Mysteries.jpg" },
             //{ episodeNum: 12, title: "Lord of the Mysteries - Ep 12", dailyMotionId: "k1skKsCOsYfD07D8dz0", imageUrl: "material /Lord of the Mysteries.jpg" }
         ]
     },
